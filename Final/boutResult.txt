@@ -1,0 +1,4 @@
+1. player1 won 2-0 to player2 by winning
+2. player3 won 2-0 to player4 by winning
+3. player1 won 2-0 to player3 by winning
+4. player2 won 2-0 to player4 by winning

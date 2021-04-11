@@ -1,0 +1,7 @@
+# %load figures/final_module.gv
+digraph setuptools {
+    node [ fontname="courier" ];
+    final -> tournament_py;
+    final [ label="final", shape=box, color="red" ]
+    tournament_py [ label=tournament.py", color="red" ];
+}

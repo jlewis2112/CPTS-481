@@ -1,0 +1,60 @@
+#! /usr/bin/env python3
+
+"""
+Joseph Lewis
+concord script
+"""
+
+import sys
+import concordance as C
+
+
+fileNames = sys.argv[1:]
+wordStructure = {}
+#used to store word and locations
+# {word: [(filename,[lines]),(filename,[lines])}
+
+
+
+#scans the word structure and prints the results sorted
+def printWords(words):
+    for word in words:
+    	occurences = 0
+    	printer = ""
+    	theWord = word[0]
+    	repeatlines = {} #{linenumber: number of times on line}
+    	for stream in sorted(word[1]):
+    	    printer += "\t" + stream[0] + ": "
+    	    for lineNumber in stream[1]:
+    	        occurences = occurences + 1    
+    	        if lineNumber in repeatlines:
+    	            repeatlines[lineNumber] += 1
+    	        else:
+    	            repeatlines[lineNumber] = 1
+    	    for liner in repeatlines:
+    	        if repeatlines[liner] != 1:
+    	            printer = printer + str(liner) +"("+str(repeatlines[liner])+")"+", "
+    	        else:
+    	            printer = printer + str(liner) + ", "
+    	    printer = printer[:-2] + "\n"
+    	    repeatlines = {}
+    	print(theWord, " (", occurences, "): ", sep = "")
+    	print(printer)
+    	        
+    	       	
+    	     
+    
+#reads all of the files and adds entries into wordStructure
+for file in fileNames:
+    f = open(file, "r");
+    concord = C.concordance(f, False)
+    for word in concord:
+        if word in wordStructure:
+            wordStructure[word].append((file,concord[word]))
+        else:
+            wordStructure[word] = [(file,concord[word])]
+    f.close()
+wordStructure = sorted(wordStructure.items())
+printWords(wordStructure)
+    	
+    

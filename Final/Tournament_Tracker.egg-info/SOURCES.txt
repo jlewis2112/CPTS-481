@@ -1,0 +1,6 @@
+setup.py
+tournament.py
+Tournament_Tracker.egg-info/PKG-INFO
+Tournament_Tracker.egg-info/SOURCES.txt
+Tournament_Tracker.egg-info/dependency_links.txt
+Tournament_Tracker.egg-info/top_level.txt
